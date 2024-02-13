@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstdlib>
 
 using namespace std;
 
@@ -15,6 +14,16 @@ void insertValue(struct node *prev, int value) {
     newNode->next = NULL;
     prev->next = newNode;
 }
+
+void insertAtEnd(struct node *head, int value) {
+    struct node *current = head;
+    while (current->next != NULL) {
+        current = current->next;
+    }
+
+    insertValue(current,value);
+}
+
 void printList(struct node *head) {
     struct node *current = head;
     while (current != NULL) {
@@ -35,6 +44,8 @@ int main() {
         insertValue(current, i);
         current = current->next;
     }
+
+    insertAtEnd(head, 10);
     printList(head);
 
     return 0;
